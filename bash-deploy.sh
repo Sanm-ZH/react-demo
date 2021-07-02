@@ -13,7 +13,7 @@ echo -e '\033[32m 已部署成功至sanm-zh.github.io \n'
 
 git remote set-url origin git@gitee.com:sanm-zh/react-demo.git
 git push origin $branch:$branch
-pnpx gh-pages -d docs
+pnpx gh-pages -d build
 echo -e '\033[32m 已部署成功至sanm-zh.gitee.io'
 echo -e '\033[32m 如果不是gitee pro用户请手动更新gitee pages服务 \n'
 
