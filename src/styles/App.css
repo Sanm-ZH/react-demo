@@ -32,6 +32,7 @@
 .list-item {
   margin-right: 30px;
   cursor: pointer;
+  transition: color 0.5s;
 }
 .list-item:hover {
   color: #61dafb;

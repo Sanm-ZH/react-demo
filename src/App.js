@@ -10,7 +10,7 @@ function HandledistributionComponent(props) {
   let element = ''
   switch (type) {
   case 'input':
-    element = <InputText />
+    element = <InputText claName="flex flex-column justify-center align-center" />
     break
   case 'time':
     element = <TimeAgeSecond />
@@ -24,8 +24,7 @@ function HandledistributionComponent(props) {
 function Default(props) {
   return (
     <div
-      style={{ 'display': props.type === '' ? 'flex' : 'none' }}
-      className="flex justify-center align-center margin-bottom-20 font-20"
+      className={`flex justify-center align-center margin-bottom-20 font-20 ${props.type === '' ? '' : 'none'}`}
     >
       请选择下面一个案例：
     </div>
