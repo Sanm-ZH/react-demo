@@ -25,7 +25,7 @@ function Default(props) {
   return (
     <div
       style={{ 'display': props.type === '' ? 'flex' : 'none' }}
-      className="flex justify-content align-content margin-bottom-20 font-20"
+      className="flex justify-center align-center margin-bottom-20 font-20"
     >
       请选择下面一个案例：
     </div>
@@ -41,7 +41,7 @@ function DemoList(props) {
   }
 
   const demoListDom = [
-    { label: '活了多少秒', type: 'time' },
+    { label: '个人信息', type: 'time' },
     { label: '输入框', type: 'input' }
   ].map(item => (
     <li key={item.type}
@@ -53,7 +53,7 @@ function DemoList(props) {
 
   return (
     <ul
-      className="flex justify-content align-content margin-bottom-30"
+      className="flex justify-center align-center margin-bottom-30"
       onClick={handelDemoListClick}
     >
       {demoListDom}

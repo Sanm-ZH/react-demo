@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { getGrowAge } from '../common/utils'
 
 
 class TimeAgeSecond extends Component {
@@ -6,13 +7,13 @@ class TimeAgeSecond extends Component {
     super(props)
     this.state = {
       name: '张三',
-      age: 28,
-      seconds: 0
+      age: getGrowAge('1990-1-1'),
+      seconds: getGrowAge('1990-1-1', 'all1')
     }
   }
 
   tick() {
-    this.setState(prevState => ({seconds: ++prevState.seconds}))
+    this.setState(() => ({seconds: getGrowAge('1990-1-1', 'all1')}))
   }
 
   componentDidMount(){
@@ -26,10 +27,10 @@ class TimeAgeSecond extends Component {
   render() {
     const { name, age, seconds } = this.state
     return (
-      <div className="">
+      <div className="flex flex-column justify-center align-center">
         <span>姓名：{ name } </span>
         <span>年龄：{ age }</span>
-        <span>活了多久: { seconds }</span>
+        <span>{ seconds }</span>
       </div>
     )
   }
