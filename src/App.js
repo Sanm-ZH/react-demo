@@ -7,6 +7,7 @@ import TimeAgeSecond from './demo_1/TimeAgeSecond'
 import LifeCycle from './demo_2/LifeCycle'
 import PropTypeComp from './demo_2/PropTypeComp'
 import RefDomComp from './demo_3/RefDomComp'
+import TodoList from './todoList/TodoList'
 
 function HandledistributionComponent(props) {
   const type = props.type
@@ -26,6 +27,9 @@ function HandledistributionComponent(props) {
     break
   case 'ref':
     element = <RefDomComp />
+    break
+  case 'todo':
+    element = <TodoList author={props.author} />
     break
   default:
     element = <span></span>
@@ -56,7 +60,8 @@ function DemoList(props) {
     { label: '输入框', type: 'input' },
     { label: '生命周期', type: 'life' },
     { label: 'propTypes', type: 'proptypes' },
-    { label: '获取dom节点', type: 'ref' }
+    { label: '获取dom节点', type: 'ref' },
+    { label: 'todo-list', type: 'todo' }
   ].map(item => (
     <li key={item.type}
       className={ `list-item word-wrap ${item.type === props.type ? 'live-active' : ''}`}
@@ -80,7 +85,7 @@ function DemoList(props) {
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = { demoType: '' }
+    this.state = { demoType: '', author: 'Sanm-ZH' }
     this.handelDemoListClick = this.handelDemoListClick.bind(this)
   }
 
@@ -89,7 +94,7 @@ class App extends Component {
   }
 
   render() {
-    const { demoType } = this.state
+    const { demoType, author } = this.state
     return (
       <div className="App">
         <header className="App-header">
@@ -98,7 +103,7 @@ class App extends Component {
         </header>
         <Default type={demoType} />
         <DemoList handelDemoListClick={ this.handelDemoListClick } type={demoType} />
-        <HandledistributionComponent type={demoType} />
+        <HandledistributionComponent type={demoType} author={author} />
       </div>
     )
   }
