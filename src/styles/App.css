@@ -30,16 +30,12 @@
 }
 
 .list-item {
-  margin-right: 30px;
+  padding: 10px 15px;
   cursor: pointer;
   transition: color 0.5s;
 }
 .list-item:hover {
   color: #61dafb;
-}
-
-.list-item:last-child {
-  margin-right: 0px;
 }
 
 .live-active {

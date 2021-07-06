@@ -8,7 +8,7 @@ class PropTypeComp extends Component{
 
   render() {
     return (
-      <div>{this.props.context}</div>
+      <div className="flex justify-center align-center">{this.props.context}</div>
     )
   }
 }

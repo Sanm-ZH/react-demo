@@ -6,6 +6,7 @@ import InputText from './demo_1/InputText'
 import TimeAgeSecond from './demo_1/TimeAgeSecond'
 import LifeCycle from './demo_2/LifeCycle'
 import PropTypeComp from './demo_2/PropTypeComp'
+import RefDomComp from './demo_3/RefDomComp'
 
 function HandledistributionComponent(props) {
   const type = props.type
@@ -22,6 +23,9 @@ function HandledistributionComponent(props) {
     break
   case 'proptypes':
     element = <PropTypeComp context="必传入参" />
+    break
+  case 'ref':
+    element = <RefDomComp />
     break
   default:
     element = <span></span>
@@ -51,22 +55,25 @@ function DemoList(props) {
     { label: '个人信息', type: 'time' },
     { label: '输入框', type: 'input' },
     { label: '生命周期', type: 'life' },
-    { label: 'propTypes', type: 'proptypes' }
+    { label: 'propTypes', type: 'proptypes' },
+    { label: '获取dom节点', type: 'ref' }
   ].map(item => (
     <li key={item.type}
-      className={ `list-item ${item.type === props.type ? 'live-active' : ''}`}
+      className={ `list-item word-wrap ${item.type === props.type ? 'live-active' : ''}`}
       value={item.type}>
       {item.label}
     </li>
   ))
 
   return (
-    <ul
-      className="flex justify-center align-center margin-bottom-30"
-      onClick={handelDemoListClick}
-    >
-      {demoListDom}
-    </ul>
+    <div className="flex justify-center align-center margin-bottom-20">
+      <ul
+        className="inline-flex flex-row justify-center flex-wrap width-700"
+        onClick={handelDemoListClick}
+      >
+        {demoListDom}
+      </ul>
+    </div>
   )
 }
 

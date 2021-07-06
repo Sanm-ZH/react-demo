@@ -1,15 +1,37 @@
+.width-500 {
+  width: 500px;
+}
+.width-600 {
+  width: 600px;
+}
+.width-700 {
+  width: 700px;
+}
+
 .margin-bottom-20 {
   margin-bottom: 20px;
 }
 .margin-bottom-30 {
   margin-bottom: 30px;
 }
+.margin-top-20 {
+  margin-top: 20px;
+}
 
 .flex {
   display: flex;
 }
+.inline-flex {
+  display: inline-flex;
+}
 .flex-column {
   flex-direction: column;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-wrap {
+  flex-wrap: wrap;
 }
 .justify-center {
   justify-content: center;
@@ -24,4 +46,14 @@
 
 .none {
   display: none;
+}
+
+.col-61dafb {
+  color: #61dafb;
+}
+
+.word-wrap {
+  white-space: normal;
+  word-break: break-all;
+  word-wrap: break-word;
 }
