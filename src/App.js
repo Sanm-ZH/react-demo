@@ -4,6 +4,7 @@ import './styles/App.css'
 import './styles/common.css'
 import InputText from './demo_1/InputText'
 import TimeAgeSecond from './demo_1/TimeAgeSecond'
+import LifeCycle from './demo_2/LifeCycle'
 
 function HandledistributionComponent(props) {
   const type = props.type
@@ -14,6 +15,9 @@ function HandledistributionComponent(props) {
     break
   case 'time':
     element = <TimeAgeSecond />
+    break
+  case 'life':
+    element = <LifeCycle><div>子节点1</div><div>子节点2</div></LifeCycle>
     break
   default:
     element = <span></span>
@@ -41,7 +45,8 @@ function DemoList(props) {
 
   const demoListDom = [
     { label: '个人信息', type: 'time' },
-    { label: '输入框', type: 'input' }
+    { label: '输入框', type: 'input' },
+    { label: '生命周期', type: 'life' }
   ].map(item => (
     <li key={item.type}
       className={ `list-item ${item.type === props.type ? 'live-active' : ''}`}
