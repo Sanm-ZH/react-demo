@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class TodoItem extends Component {
   constructor(props) {
@@ -6,6 +7,11 @@ class TodoItem extends Component {
 
     this.handelOptCompletedClick = this.handelOptCompletedClick.bind(this)
     this.hendelDeleteTodoClick = this.hendelDeleteTodoClick.bind(this)
+  }
+
+  static propTypes = {
+    todo: PropTypes.object.isRequired,
+    isPc: PropTypes.bool.isRequired
   }
 
   handelOptCompletedClick() {

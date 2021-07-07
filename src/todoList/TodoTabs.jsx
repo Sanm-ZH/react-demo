@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import './tabs.css'
 
 class TodoTabs extends Component {
@@ -15,6 +16,11 @@ class TodoTabs extends Component {
 
     this.handleClearAllCompletedClick = this.handleClearAllCompletedClick.bind(this)
     this.handelToggleFilterClick = this.handelToggleFilterClick.bind(this)
+  }
+
+  static propTypes = {
+    todos: PropTypes.array.isRequired,
+    filter: PropTypes.string.isRequired
   }
 
   handleClearAllCompletedClick() {
