@@ -9,7 +9,7 @@ class LifeCycle extends Component {
       inputoutText: ['<div>componentWillMount</div><div>当前版本挂载前已弃用，可以在 constructor 中初始化数据</div>']
     }
 
-    document.title = '生命周期'
+    document.title = 'React App | 生命周期'
   }
 
   componentDidMount() {
