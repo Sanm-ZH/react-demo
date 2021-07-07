@@ -7,7 +7,7 @@ class Author extends Component {
   }
   render() {
     return (
-      <div id='author'>
+      <div id='author' className="margin-bottom-30">
         <span>Written by {this.props.author}</span>
       </div>
     )

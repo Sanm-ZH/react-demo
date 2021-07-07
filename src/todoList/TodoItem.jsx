@@ -19,7 +19,7 @@ class TodoItem extends Component {
   render() {
     return (
       <div
-        className={`todo-item ${this.props.todo.completed ? 'completed' : ''} ${this.props.isPc ? '' : 'notPc'}`}
+        className={`todo-item ${this.props.todo.completed ? 'finish' : ''} ${this.props.isPc ? '' : 'notPc'}`}
       >
         <input
           type="checkbox"

@@ -3,7 +3,7 @@
   flex-direction: column;
   background-color: #282c34;
   color: white;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .App-logo {

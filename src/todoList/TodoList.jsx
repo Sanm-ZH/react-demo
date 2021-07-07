@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { isPCHandle } from '../common/utils'
 import TodoItem from './TodoItem'
+import TodoTabs from './TodoTabs'
 import Author from './Author'
 import './todo.css'
 
@@ -11,13 +12,17 @@ class TodoList extends Component {
     this.state = {
       title: document.title,
       todos: [],
-      isPc: isPCHandle()
+      isPc: isPCHandle(),
+      filteredTodos: [],
+      filter: 'all'
     }
     this.inputRef = React.createRef()
     this.handelAddItem = this.handelAddItem.bind(this)
     this.handelDeleteTodoItem = this.handelDeleteTodoItem.bind(this)
     this.handelClearAllCompleted = this.handelClearAllCompleted.bind(this)
     this.handelOptCompletedItem = this.handelOptCompletedItem.bind(this)
+    this.handelToggleFilter = this.handelToggleFilter.bind(this)
+    this.handelFilteredTodos = this.handelFilteredTodos.bind(this)
     // 输入框赋予焦点
     setTimeout(() => {
       this.inputRef.current.focus()
@@ -45,6 +50,9 @@ class TodoList extends Component {
         todos: prevState.todos
       }
     })
+    this.setState((prevState) => ({
+      filteredTodos: this.handelFilteredTodos(prevState)
+    }))
     e.target.value = ''
   }
 
@@ -53,10 +61,20 @@ class TodoList extends Component {
       prevState.todos.splice(prevState.todos.findIndex((todo) => todo.id === id), 1)
       return { todos:  prevState.todos}
     })
+    this.setState((prevState) => ({
+      filteredTodos: this.handelFilteredTodos(prevState)
+    }))
   }
 
   handelClearAllCompleted() {
-
+    this.setState((prevState) => {
+      const activeList = prevState.todos.filter(todo => !todo.completed)
+      return { todos: activeList}
+    })
+    this.setState((prevState) => ({
+      filteredTodos: this.handelFilteredTodos(prevState)
+    }))
+    this.inputRef.current.focus()
   }
 
   handelOptCompletedItem(id) {
@@ -67,7 +85,23 @@ class TodoList extends Component {
     })
   }
 
+  handelToggleFilter(filter) {
+    this.setState({ filter: filter })
+    this.setState((prevState) => ({
+      filteredTodos: this.handelFilteredTodos(prevState)
+    }))
+  }
+
+  handelFilteredTodos(data) {
+    if (data.filter === 'all') {
+      return data.todos
+    }
+    const flag = data.filter === 'completed'
+    return data.todos.filter(todo => flag === todo.completed)
+  }
+
   render() {
+    const { filter, todos, isPc, filteredTodos } = this.state
     return (
       <div>
         <div className="todo-app">
@@ -79,10 +113,22 @@ class TodoList extends Component {
             onKeyPress={this.handelAddItem}
           />
           {
-            this.state.todos.map(todo =>
-              <TodoItem todo={todo} isPc={this.state.isPc} key={todo.id} handelOptCompletedItem={this.handelOptCompletedItem} handelDeleteTodoItem={this.handelDeleteTodoItem} />
+            filteredTodos.map(todo =>
+              <TodoItem
+                todo={todo}
+                isPc={isPc}
+                key={todo.id}
+                handelOptCompletedItem={this.handelOptCompletedItem}
+                handelDeleteTodoItem={this.handelDeleteTodoItem}
+              />
             )
           }
+          <TodoTabs
+            filter={filter}
+            todos={todos}
+            handelToggleFilter={this.handelToggleFilter}
+            handelClearAllCompleted={this.handelClearAllCompleted}
+          />
         </div>
         <Author author={this.props.author} />
       </div>
