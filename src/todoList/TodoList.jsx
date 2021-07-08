@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import memoize from 'memoize-one'
 import { isPCHandle } from '../common/utils'
 import TodoItem from './TodoItem'
 import TodoTabs from './TodoTabs'
@@ -9,24 +10,24 @@ class TodoList extends Component {
   constructor(props) {
     super(props)
     document.title = 'React App | Todo List'
-    this.state = {
-      title: document.title,
-      todos: [],
-      isPc: isPCHandle(),
-      filteredTodos: [],
-      filter: 'all'
-    }
+
     this.inputRef = React.createRef()
     this.handelAddItem = this.handelAddItem.bind(this)
     this.handelDeleteTodoItem = this.handelDeleteTodoItem.bind(this)
     this.handelClearAllCompleted = this.handelClearAllCompleted.bind(this)
     this.handelOptCompletedItem = this.handelOptCompletedItem.bind(this)
     this.handelToggleFilter = this.handelToggleFilter.bind(this)
-    this.handelFilteredTodos = this.handelFilteredTodos.bind(this)
     // 输入框赋予焦点
     setTimeout(() => {
       this.inputRef.current.focus()
     }, 300)
+  }
+
+  state = {
+    title: document.title,
+    todos: [],
+    isPc: isPCHandle(),
+    filter: 'all'
   }
 
   componentWillUnmount() {
@@ -50,9 +51,6 @@ class TodoList extends Component {
         todos: prevState.todos
       }
     })
-    this.setState((prevState) => ({
-      filteredTodos: this.handelFilteredTodos(prevState)
-    }))
     e.target.value = ''
   }
 
@@ -61,9 +59,7 @@ class TodoList extends Component {
       prevState.todos.splice(prevState.todos.findIndex((todo) => todo.id === id), 1)
       return { todos:  prevState.todos}
     })
-    this.setState((prevState) => ({
-      filteredTodos: this.handelFilteredTodos(prevState)
-    }))
+    this.inputRef.current.focus()
   }
 
   handelClearAllCompleted() {
@@ -71,9 +67,6 @@ class TodoList extends Component {
       const activeList = prevState.todos.filter(todo => !todo.completed)
       return { todos: activeList}
     })
-    this.setState((prevState) => ({
-      filteredTodos: this.handelFilteredTodos(prevState)
-    }))
     this.inputRef.current.focus()
   }
 
@@ -83,25 +76,26 @@ class TodoList extends Component {
       prevState.todos[activeTodoIndex]['completed'] = !prevState.todos[activeTodoIndex]['completed']
       return { todos:  prevState.todos}
     })
+    this.inputRef.current.focus()
   }
 
   handelToggleFilter(filter) {
     this.setState({ filter: filter })
-    this.setState((prevState) => ({
-      filteredTodos: this.handelFilteredTodos(prevState)
-    }))
+    this.inputRef.current.focus()
   }
 
-  handelFilteredTodos(data) {
-    if (data.filter === 'all') {
-      return data.todos
+  handelFilteredTodos = memoize((filter, todos) => {
+    if (filter === 'all') {
+      return todos
     }
-    const flag = data.filter === 'completed'
-    return data.todos.filter(todo => flag === todo.completed)
-  }
+    const flag = filter === 'completed'
+    return todos.filter(todo => flag === todo.completed)
+  })
 
   render() {
-    const { filter, todos, isPc, filteredTodos } = this.state
+    const { filter, todos, isPc } = this.state
+    const filteredTodos = this.handelFilteredTodos(this.state.filter, this.state.todos)
+
     return (
       <div>
         <div className="todo-app">

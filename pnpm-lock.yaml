@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   gh-pages: ^3.2.3
+  memoize-one: ^5.2.1
   react: ^16.6.3
   react-dom: ^16.6.3
   react-scripts: 2.1.1
@@ -13,6 +14,7 @@ dependencies:
 
 devDependencies:
   gh-pages: registry.nlark.com/gh-pages/3.2.3
+  memoize-one: registry.nlark.com/memoize-one/5.2.1
 
 packages:
 
@@ -374,6 +376,8 @@ packages:
     engines: {node: '>= 6.0.0'}
     dependencies:
       debug: 4.3.1
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /ajv-errors/1.0.1_ajv@6.12.6:
@@ -2856,6 +2860,8 @@ packages:
       '@tootallnate/once': 1.1.2
       agent-base: 6.0.2
       debug: 4.3.1
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /http-proxy/1.18.1:
@@ -2886,6 +2892,8 @@ packages:
     dependencies:
       agent-base: 6.0.2
       debug: 4.3.1
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /icss-replace-symbols/1.1.0:
@@ -8106,6 +8114,8 @@ packages:
       '@babel/types': registry.nlark.com/@babel/types/7.14.5
       debug: 4.3.1
       globals: registry.nlark.com/globals/11.12.0
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   registry.nlark.com/@babel/types/7.14.5:
@@ -8141,6 +8151,7 @@ packages:
     transitivePeerDependencies:
       - bufferutil
       - canvas
+      - supports-color
       - utf-8-validate
     dev: false
 
@@ -9451,6 +9462,7 @@ packages:
     transitivePeerDependencies:
       - bufferutil
       - canvas
+      - supports-color
       - utf-8-validate
     dev: false
 
@@ -9472,6 +9484,7 @@ packages:
     transitivePeerDependencies:
       - bufferutil
       - canvas
+      - supports-color
       - utf-8-validate
     dev: false
 
@@ -10196,6 +10209,7 @@ packages:
       xml-name-validator: 3.0.0
     transitivePeerDependencies:
       - bufferutil
+      - supports-color
       - utf-8-validate
     dev: false
 
@@ -10256,6 +10270,12 @@ packages:
       mimic-fn: 2.1.0
       p-is-promise: registry.nlark.com/p-is-promise/2.1.0
     dev: false
+
+  registry.nlark.com/memoize-one/5.2.1:
+    resolution: {integrity: sha1-gzeqPEM1WBg57AHD1ZQJDOvo8A4=, registry: http://registry.npm.taobao.org/, tarball: https://registry.nlark.com/memoize-one/download/memoize-one-5.2.1.tgz}
+    name: memoize-one
+    version: 5.2.1
+    dev: true
 
   registry.nlark.com/merge-deep/3.0.3:
     resolution: {integrity: sha1-Gisq6SbaiyrpOgrBXZDNGSJ2YAM=, registry: http://registry.npm.taobao.org/, tarball: https://registry.nlark.com/merge-deep/download/merge-deep-3.0.3.tgz}
