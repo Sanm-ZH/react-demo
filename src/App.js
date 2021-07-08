@@ -8,6 +8,7 @@ import LifeCycle from './demo_2/LifeCycle'
 import PropTypeComp from './demo_2/PropTypeComp'
 import RefDomComp from './demo_3/RefDomComp'
 import TodoList from './todoList/TodoList'
+import ScorllStyle1 from './demo_4/ScorllStyle1'
 
 function HandledistributionComponent(props) {
   const type = props.type
@@ -30,6 +31,9 @@ function HandledistributionComponent(props) {
     break
   case 'todo':
     element = <TodoList author={props.author} />
+    break
+  case 'scorll1':
+    element = <ScorllStyle1 />
     break
   default:
     element = <span></span>
@@ -61,7 +65,8 @@ function DemoList(props) {
     { label: '生命周期', type: 'life' },
     { label: 'propTypes', type: 'proptypes' },
     { label: '获取dom节点', type: 'ref' },
-    { label: 'todo-list', type: 'todo' }
+    { label: 'todo-list', type: 'todo' },
+    { label: 'scorll样式1', type: 'scorll1' }
   ].map(item => (
     <li key={item.type}
       className={ `list-item word-wrap ${item.type === props.type ? 'live-active' : ''}`}

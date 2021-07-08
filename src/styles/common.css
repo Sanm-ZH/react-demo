@@ -8,6 +8,10 @@
   width: 700px;
 }
 
+.max-height-175 {
+  max-height: 175px;
+}
+
 .margin-bottom-20 {
   margin-bottom: 20px;
 }
