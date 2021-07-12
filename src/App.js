@@ -9,6 +9,7 @@ import PropTypeComp from './demo_2/PropTypeComp'
 import RefDomComp from './demo_3/RefDomComp'
 import TodoList from './todoList/TodoList'
 import ScorllStyle1 from './demo_4/ScorllStyle1'
+import Counter from './demo_5/Counter-hooks'
 
 function HandledistributionComponent(props) {
   const type = props.type
@@ -34,6 +35,9 @@ function HandledistributionComponent(props) {
     break
   case 'scorll1':
     element = <ScorllStyle1 />
+    break
+  case 'counter':
+    element = <Counter initialCount={0} />
     break
   default:
     element = <span></span>
@@ -66,7 +70,8 @@ function DemoList(props) {
     { label: 'propTypes', type: 'proptypes' },
     { label: '获取dom节点', type: 'ref' },
     { label: 'todo-list', type: 'todo' },
-    { label: 'scorll样式1', type: 'scorll1' }
+    { label: 'scorll样式1', type: 'scorll1' },
+    { label: '计数器hooks版', type: 'counter' },
   ].map(item => (
     <li key={item.type}
       className={ `list-item word-wrap ${item.type === props.type ? 'live-active' : ''}`}
