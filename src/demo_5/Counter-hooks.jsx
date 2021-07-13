@@ -9,7 +9,7 @@ export default function Counter({initialCount}) {
 
   return (
     <div className="flex flex-column justify-center align-center">
-      <span>Count: <t>{count}</t></span>
+      <span>Count: <b>{count}</b></span>
       <div className="margin-top-10">
         <button onClick={() => setCount(initialCount)}>Reset</button>
         <button onClick={() => setCount(prevCount => prevCount - 1)}>-</button>

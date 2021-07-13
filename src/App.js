@@ -8,8 +8,10 @@ import LifeCycle from './demo_2/LifeCycle'
 import PropTypeComp from './demo_2/PropTypeComp'
 import RefDomComp from './demo_3/RefDomComp'
 import TodoList from './todoList/TodoList'
+import TodoListHooks from './todoList-hooks/TodoList'
 import ScorllStyle1 from './demo_4/ScorllStyle1'
 import Counter from './demo_5/Counter-hooks'
+import CounterPrev from './demo_5/Counter-Prev-hooks'
 
 function HandledistributionComponent(props) {
   const type = props.type
@@ -33,11 +35,17 @@ function HandledistributionComponent(props) {
   case 'todo':
     element = <TodoList author={props.author} />
     break
+  case 'todo-hooks':
+    element = <TodoListHooks author={props.author} />
+    break
   case 'scorll1':
     element = <ScorllStyle1 />
     break
   case 'counter':
     element = <Counter initialCount={0} />
+    break
+  case 'counter-prev':
+    element = <CounterPrev />
     break
   default:
     element = <span></span>
@@ -70,8 +78,10 @@ function DemoList(props) {
     { label: 'propTypes', type: 'proptypes' },
     { label: '获取dom节点', type: 'ref' },
     { label: 'todo-list', type: 'todo' },
+    { label: 'todo-list-hooks', type: 'todo-hooks' },
     { label: 'scorll样式1', type: 'scorll1' },
-    { label: '计数器hooks版', type: 'counter' },
+    { label: '计数器hooks', type: 'counter' },
+    { label: '计数器-prev hooks', type: 'counter-prev' },
   ].map(item => (
     <li key={item.type}
       className={ `list-item word-wrap ${item.type === props.type ? 'live-active' : ''}`}
