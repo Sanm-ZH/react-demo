@@ -1,0 +1,161 @@
+/* todo-list */
+.todo-app {
+  opacity: 1;
+  max-width: 620px;
+  margin: 0px auto;
+  box-shadow: 6px 2px 10px #61dafb;
+  border-radius: 5px;
+  padding: 10px 10px 0px;
+  background: #ffffff;
+}
+
+@media (max-width: 28.125rem) {
+  .todo-app {
+    margin: 0 1.25rem;
+  }
+}
+
+.add-input {
+  margin: 0px;
+  width: 100%;
+  font-size: 24px;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: 1.4rem;
+  border: 0;
+  outline: none;
+  color: #61dafb;
+  padding: 6px;
+  border: 1px solid #999;
+  box-shadow: inset 0 -1px 5px 0px rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  padding: 16px 16px 16px 16px;
+  border: none;
+  z-index: 1000;
+  display: flex;
+  text-align: center;
+  position: sticky;
+  top: 0;
+}
+
+@media (max-width: 18.75rem) {
+  .add-input {
+    font-size: 1rem;
+  }
+}
+
+/* todo-item */
+.todo-item {
+  position: relative;
+  background: #ffffff;
+  font-size: 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+.todo-item:hover .destroy::before {
+  opacity: 1;
+}
+.todo-item label {
+  white-space: pre-line;
+  word-break: break-all;
+  padding: 15px 60px 15px 15px;
+  margin-left: 45px;
+  display: block;
+  line-height: 1.2;
+  transition: color 0.4s;
+  color: #000;
+  font-weight: 500;
+}
+.finish {
+  color: #d9d9d9;
+  text-decoration: line-through;
+}
+.finish label {
+  color: #c1c1c1;
+}
+.toggle {
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  position: absolute;
+  top: -3px;
+  bottom: 0;
+  left: 0;
+  margin: auto 0;
+  border: none;
+  outline: none;
+  appearance: none;
+}
+.toggle:before {
+  content: url('../images/round.png');
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  cursor: pointer;
+}
+.toggle:checked:before {
+  content: url('../images/done.png');
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  cursor: pointer;
+}
+.destroy {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  margin: auto 0;
+  font-size: 30px;
+  color: #de0f0f;
+  margin-bottom: 11px;
+  transition: color 0.2s east-out;
+  background-color: transparent;
+  appearance: none;
+  border-width: 0;
+  cursor: pointer;
+  outline: none;
+}
+.destroy::before {
+  content: 'x';
+  font-size: 20px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.notPc .destroy::before {
+  opacity: 1;
+}
+
+/* author */
+#author {
+  margin-top: 30px;
+  text-align: center;
+  font-weight: 800;
+  color: #b9b9b9;
+  font-size: 18px;
+  animation: shadowText 10s infinite;
+}
+
+@keyframes shadowText {
+  0% {
+  }
+  20% {
+    text-shadow: -5px 4px 3px rgba(255, 255, 255, 0.5);
+    color: rgb(255, 255, 255);
+  }
+  50% {
+    text-shadow: 0px 4px 3px rgba(97, 218, 251, 0.5);
+    color: rgb(97, 218, 251);
+  }
+  75% {
+    text-shadow: 5px 4px 3px rgba(64, 160, 255, 0.5);
+    color: rgb(64, 160, 255);
+  }
+  100% {
+  }
+}
+
+@media (max-width: 18.75rem) {
+  #author {
+    font-size: 0.75rem;
+  }
+}
