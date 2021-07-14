@@ -11,10 +11,11 @@ function usePrevious(value) {
 export default function CounterPrev() {
   const [count, setCount] = useState(0)
   const prevCount = usePrevious(count)
-
   const [title] = useState(document.title)
-  document.title = 'React App | 计数器'
-  useEffect(() => () => document.title = title)
+  useEffect(() => {
+    document.title = 'React App | 计数器'
+    return () => document.title = title
+  }, [title])
 
   const [timeList, setTimeList] = useState([{name: '用户1', time: +new Date()}])
   const prevTimeList = usePrevious(timeList)

@@ -8,8 +8,10 @@ import './todo.css'
 export default function TodoList({ author }) {
   // 页面标签标题
   const [pageTitle] = useState(document.title)
-  document.title = 'React App | Todo Hooks'
-  useEffect(() => () => document.title = pageTitle)
+  useEffect(() => {
+    document.title = 'React App | Todo Hooks'
+    return () => document.title = pageTitle
+  }, [pageTitle])
 
   // 输入框 焦点
   const inputRef = useRef(null)
